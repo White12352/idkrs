@@ -10,8 +10,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: .NET Restore
-        uses: zyactions/dotnet-restore@v1.0.1
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3.0.2
 
       - name: Setup Windows 10 SDK Action
         uses: GuillaumeFalourd/setup-windows10-sdk-action@v1.11
@@ -20,6 +20,7 @@ jobs:
       
       - name: Build
         run: |
+          dotnet restore
           dotnet build -c Release -p:Platform=x64 /p:AppxBundlePlatforms="x64" /p:AppxBundle=Always /p:UapAppxPackageBuildMode=Release /p:PackageCertificateKeyFile=D:\a\idkrs\idkrs\src\BiliLite.UWP\App_TemporaryKey.pfx /p:AppxPackageDir=D:\a\idkrs\idkrs\output\bin
 
       - name: Upload
