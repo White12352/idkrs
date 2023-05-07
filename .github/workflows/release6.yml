@@ -25,8 +25,7 @@ jobs:
       
       - name: Build
         run: |
-          dotnet restore
-          msbuild /t:build /p:Platform=x64 /p:Configuration=Release /p:AppxBundlePlatforms="x64" /p:AppxBundle=Always /p:UapAppxPackageBuildMode=Release /p:PackageCertificateKeyFile=D:\a\idkrs\idkrs\src\BiliLite.UWP\App_TemporaryKey.pfx /p:AppxPackageDir=D:\a\idkrs\idkrs\output\bin
+          msbuild /t:restore /t:build /p:Platform=x64 /p:Configuration=Release /p:AppxBundlePlatforms="x64" /p:AppxBundle=Always /p:UapAppxPackageBuildMode=Release /p:PackageCertificateKeyFile=D:\a\idkrs\idkrs\src\BiliLite.UWP\App_TemporaryKey.pfx /p:AppxPackageDir=D:\a\idkrs\idkrs\output\bin
 
       - name: Upload
         uses: actions/upload-artifact@v3.1.1
